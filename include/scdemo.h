@@ -1,9 +1,39 @@
 #pragma once 
 
-const void *demo_scene;
+#include "global.h"
 
-struct DemoSceneInfo { // size = 0x10
+typedef u32 Beatscript[3];
+struct Scene_ {
+    void (*initFunc)(void *);
+    void *initParam;
+    void (*unkFunc)(void *);
+    void *unkParam;
+    void (*loopFunc)(void *);
+    void *loopParam;
+    void (*endFunc)(void *);
+    void *endParam;
+    Beatscript *beatscript;
+};
+
+struct _Scene {
+	void (*initFunc)(void *);
+	struct Scene_ *initParam;
+	u32 (*loopFunc)(void *);
+	void *loopParam;
+	void (*endFunc)(void *);
+	void *endParam;
+	u16 unk18;
+};
+
+
+const Beatscript demo_beatscript[];
+const struct Scene_ demo_scene_;
+const struct _Scene demo_scene;
+
+struct DemoSceneInfo { // Size = 0x10
     u32 notsure;
     s16 circle;
     u32 pad8[2];
 };
+
+extern struct DemoSceneInfo *D_030046a4_d;
