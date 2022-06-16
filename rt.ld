@@ -1780,6 +1780,9 @@ SECTIONS {
         
         build/bin/bindata_08bd0cac.bin.o(.rodata*);
         build/bin/bindata_08cc4bcc.bin.o(.rodata*);
+
+        build/asm/scdemo.s.o(.text);
+        build/asm/scdemo.s.o(.rodata*);
 	}
 
 	_end = . ;

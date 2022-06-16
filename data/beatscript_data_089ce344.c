@@ -1,12 +1,13 @@
 #include "global.h"
 #include "beatscript_data_089ce344.h"
 #include "data_08052464.h"
+#include "scdemo.h"
 
 const struct unk_struct_089ce344 D_089ce344[] = {
     
 // Karate Man 1
 {
-    /* unk0 */         &D_089cfed0,
+    /* unk0 */         &demo_scene,
     /* name */         text_karate_man_name,
     /* description */  text_karate_man_description,
     /* unkC */         8,
