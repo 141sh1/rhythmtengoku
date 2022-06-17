@@ -25,8 +25,22 @@ void demo_create() {
 }
 
 void demo_update() {
-    gDemo->circleX++;
-    gDemo->circleY++;
+    u16 inputs = ~REG_KEY;
+    switch (inputs & (DPAD_RIGHT|DPAD_LEFT|DPAD_UP|DPAD_DOWN)) {
+        case DPAD_RIGHT:
+            gDemo->circleX++;
+            break;
+        case DPAD_LEFT:
+            gDemo->circleX--;
+            break;
+        case DPAD_DOWN:
+            gDemo->circleY++;
+            break;
+        case DPAD_UP:
+            gDemo->circleY--;
+            break;
+        
+    }
     if (gDemo->circleX > 260) {
         gDemo->circleX = 0;
     }
