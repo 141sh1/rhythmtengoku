@@ -40,7 +40,7 @@ void demo_update() {
             return;
         }
         // Create a random letter at a random position
-        gDemo->objs[gDemo->objCount] = func_0804d160(D_03005380, demo_letters[func_08001980(5)], 0, func_08001980(240), func_08001980(150), 0x4801, 0, 0, 0x8000);
+        gDemo->objs[gDemo->objCount] = func_0804d160(D_03005380, demo_letters[func_08001980(5)], 0, func_08001980(240), func_08001980(150), 0x4710, 0, 0, 0x8000);
         func_0804d770(D_03005380, gDemo->objs[gDemo->objCount], 1); // Make sure it's visible
         gDemo->objCount++;
     }
@@ -158,3 +158,4 @@ const Beatscript demo_beatscript[] = {
     {0, 0, 0xc},                // Rest
     {1, 0, 0},                  // Exit
 };
+
