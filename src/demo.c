@@ -37,7 +37,7 @@ void demo_update() {
             gDemo->circleX++;
             gDemo->circleY++;
             break;
-            
+
         case DPAD_LEFT:
             gDemo->circleX--;
             break;
@@ -58,11 +58,18 @@ void demo_update() {
             break;
         
     }
-    if (gDemo->circleX > 260) {
+    if (gDemo->circleX < 0) {
         gDemo->circleX = 0;
     }
-    if (gDemo->circleY > 160) {
+    if (gDemo->circleX > 240) {
+        gDemo->circleX = 240;
+    }
+
+    if (gDemo->circleY < 0) {
         gDemo->circleY = 0;
+    }
+    if (gDemo->circleY > 150) {
+        gDemo->circleY = 150;
     }
 
     func_0804d5d4(D_03005380, gDemo->circle, gDemo->circleX, gDemo->circleY); // Set X and Y
@@ -81,14 +88,6 @@ void demo_stop() {
 
 void demo_bs_init() {
     func_0804d770(D_03005380, gDemo->circle, 1); // Make the circle visible
-}
-
-void demo_bs_update() {
-    /*
-    gDemo->circleX++;
-    gDemo->circleY++;
-    func_0804d5d4(D_03005380, gDemo->circle, gDemo->circleX, gDemo->circleY); // Set X and Y
-    */
 }
 
 ////////////////////////////////////////////////////////////////
@@ -121,7 +120,7 @@ const Beatscript demo_beatscript[] = {
     {3, 0x08007325, 1},         // Visuals
     {3, demo_bs_init, 0},       // Init
     {0x28, 0xff, 0x08a9b078},   // Play Lesson1
-    {3, demo_bs_update, 0},     // Update
+    {3, demo_stub, 0},          // Not sure 
     {3, 0x0800bd05, 1},         // More update
     {0x136, 0, 0x30},           // Fade out music
     {0x14a, 0xc, 0},            // Fade out screen

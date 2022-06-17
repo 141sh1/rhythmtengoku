@@ -33,8 +33,8 @@ const struct _Scene demo_scene;
 struct DemoSceneInfo { // Size = 0x10
     u32 notsure;
     s16 circle;
-    u16 circleX;
-    u16 circleY;
+    s16 circleX;
+    s16 circleY;
 };
 
 extern struct DemoSceneInfo *D_030046a4_d;
