@@ -25,14 +25,31 @@ void demo_create() {
 }
 
 void demo_update() {
-    u16 inputs = ~REG_KEY;
-    switch (inputs & (DPAD_RIGHT|DPAD_LEFT|DPAD_UP|DPAD_DOWN)) {
+    switch (D_03004ac0 & (DPAD_RIGHT|DPAD_LEFT|DPAD_UP|DPAD_DOWN)) {
         case DPAD_RIGHT:
             gDemo->circleX++;
             break;
+        case DPAD_RIGHT|DPAD_UP:
+            gDemo->circleX++;
+            gDemo->circleY--;
+            break;
+        case DPAD_RIGHT|DPAD_DOWN:
+            gDemo->circleX++;
+            gDemo->circleY++;
+            break;
+            
         case DPAD_LEFT:
             gDemo->circleX--;
             break;
+        case DPAD_LEFT|DPAD_UP:
+            gDemo->circleX--;
+            gDemo->circleY--;
+            break;
+        case DPAD_LEFT|DPAD_DOWN:
+            gDemo->circleX--;
+            gDemo->circleY++;
+            break;
+
         case DPAD_DOWN:
             gDemo->circleY++;
             break;
