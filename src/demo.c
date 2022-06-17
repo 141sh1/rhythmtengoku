@@ -22,6 +22,7 @@ void demo_create() {
 
     gDemo->circleY = 0;
     gDemo->circleX = 0;
+    gDemo->objCount = 0;
 }
 
 void demo_update() {
@@ -32,6 +33,13 @@ void demo_update() {
     } else if ((D_03004afc & A_BUTTON) && (gDemo->circleVisible == FALSE)) {
         func_0804d770(D_03005380, gDemo->circle, 1);
         gDemo->circleVisible = TRUE;
+    }
+
+    if (D_03004afc & B_BUTTON) {
+        // Oh no
+        gDemo->objs[gDemo->objCount] = func_0804d160(D_03005380, (u32 *)0x890d4a0, 0, func_08001980(240), func_08001980(150), 0x4801, 0, 0, 0x8000);
+        func_0804d770(D_03005380, gDemo->objs[gDemo->objCount], 1); 
+        // Testing place
     }
 
     // Handle movement

@@ -30,12 +30,14 @@ const Beatscript demo_beatscript[];
 const struct Scene_ demo_scene_;
 const struct _Scene demo_scene;
 
-struct DemoSceneInfo { // Size = 0x10
+struct DemoSceneInfo {
     u32 notsure;
     s16 circle;
     s16 circleX;
     s16 circleY;
     u8 circleVisible;
+    u8 objCount;
+    s16 objs[sizeof(u8)];
 };
 
 extern struct DemoSceneInfo *D_030046a4_d;
