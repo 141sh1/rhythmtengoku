@@ -16,11 +16,26 @@ void demo_init_gfx() {
 void demo_create() {
     func_08007324(0); // (Un)Freeze visuals
     func_080073f0();  // Reset the GFX System
-    D_030046a4_d->circle = func_0804d160(D_03005380, (u32 *)0x0890d4f0, 0, 0x90, 0x90, 0x4800, 0, 0, 0x8000);
+    // 0x0890d4f0 - Black Circle OAM Animation
+    gDemo->circle = func_0804d160(D_03005380, (u32 *)0x0890d4f0, 0, 0x90, 0x90, 0x4800, 0, 0, 0x8000);
     demo_init_gfx();
+
+    gDemo->circleY = 0;
+    gDemo->circleX = 0;
 }
 
 void demo_update() {
+    gDemo->circleX++;
+    gDemo->circleY++;
+    if (gDemo->circleX > 260) {
+        gDemo->circleX = 0;
+    }
+    if (gDemo->circleY > 160) {
+        gDemo->circleY = 0;
+    }
+
+    func_0804d5d4(D_03005380, gDemo->circle, gDemo->circleX, gDemo->circleY); // Set X and Y
+
     if ((D_03004afc & 4) != 0) { // Reset on pressing SELECT
         func_0800bd04(0);
     }
@@ -34,11 +49,15 @@ void demo_stop() {
 ////////////////////////////////////////////////////////////
 
 void demo_bs_init() {
-    func_0804d770(D_03005380, D_030046a4_d->circle, 1); // Make the circle visible
+    func_0804d770(D_03005380, gDemo->circle, 1); // Make the circle visible
 }
 
 void demo_bs_update() {
-    func_0804d5d4(D_03005380, D_030046a4_d->circle, 0x40, 0x40); // Set X and Y
+    /*
+    gDemo->circleX++;
+    gDemo->circleY++;
+    func_0804d5d4(D_03005380, gDemo->circle, gDemo->circleX, gDemo->circleY); // Set X and Y
+    */
 }
 
 ////////////////////////////////////////////////////////////////

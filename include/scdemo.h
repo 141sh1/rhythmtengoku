@@ -33,7 +33,9 @@ const struct _Scene demo_scene;
 struct DemoSceneInfo { // Size = 0x10
     u32 notsure;
     s16 circle;
-    u32 pad8[2];
+    u16 circleX;
+    u16 circleY;
 };
 
 extern struct DemoSceneInfo *D_030046a4_d;
+#define gDemo D_030046a4_d
