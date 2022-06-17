@@ -35,6 +35,7 @@ struct DemoSceneInfo { // Size = 0x10
     s16 circle;
     s16 circleX;
     s16 circleY;
+    u8 circleVisible;
 };
 
 extern struct DemoSceneInfo *D_030046a4_d;

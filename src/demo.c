@@ -25,6 +25,16 @@ void demo_create() {
 }
 
 void demo_update() {
+    // Handle visibility
+    if ((D_03004afc & A_BUTTON) && (gDemo->circleVisible != FALSE)) {
+        func_0804d770(D_03005380, gDemo->circle, 0);
+        gDemo->circleVisible = FALSE;
+    } else if ((D_03004afc & A_BUTTON) && (gDemo->circleVisible == FALSE)) {
+        func_0804d770(D_03005380, gDemo->circle, 1);
+        gDemo->circleVisible = TRUE;
+    }
+
+    // Handle movement
     switch (D_03004ac0 & (DPAD_RIGHT|DPAD_LEFT|DPAD_UP|DPAD_DOWN)) {
         case DPAD_RIGHT:
             gDemo->circleX++;
@@ -74,8 +84,8 @@ void demo_update() {
 
     func_0804d5d4(D_03005380, gDemo->circle, gDemo->circleX, gDemo->circleY); // Set X and Y
 
-    if ((D_03004afc & 4) != 0) { // Reset on pressing SELECT
-        func_0800bd04(0);
+    if ((D_03004afc & SELECT_BUTTON) != 0) { 
+        func_0800bd04(0); // Go back (To the Title Screen for some reason)
     }
 }
 
@@ -88,6 +98,7 @@ void demo_stop() {
 
 void demo_bs_init() {
     func_0804d770(D_03005380, gDemo->circle, 1); // Make the circle visible
+    gDemo->circleVisible = TRUE;
 }
 
 ////////////////////////////////////////////////////////////////
