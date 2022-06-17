@@ -25,7 +25,7 @@ struct _Scene {
 	u16 unk18;
 };
 
-
+const u32 demo_letters[5];
 const Beatscript demo_beatscript[];
 const struct Scene_ demo_scene_;
 const struct _Scene demo_scene;

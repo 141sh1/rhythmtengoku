@@ -36,10 +36,13 @@ void demo_update() {
     }
 
     if (D_03004afc & B_BUTTON) {
-        // Oh no
-        gDemo->objs[gDemo->objCount] = func_0804d160(D_03005380, (u32 *)0x890d4a0, 0, func_08001980(240), func_08001980(150), 0x4801, 0, 0, 0x8000);
-        func_0804d770(D_03005380, gDemo->objs[gDemo->objCount], 1); 
-        // Testing place
+        if (gDemo->objCount > 10) { // Too much sprites can break everything (Flashing letters, game freezing etc.)
+            return;
+        }
+        // Create a random letter at a random position
+        gDemo->objs[gDemo->objCount] = func_0804d160(D_03005380, demo_letters[func_08001980(5)], 0, func_08001980(240), func_08001980(150), 0x4801, 0, 0, 0x8000);
+        func_0804d770(D_03005380, gDemo->objs[gDemo->objCount], 1); // Make sure it's visible
+        gDemo->objCount++;
     }
 
     // Handle movement
@@ -110,6 +113,15 @@ void demo_bs_init() {
 }
 
 ////////////////////////////////////////////////////////////////
+
+const u32 demo_letters[5] = {
+    0x0890d4a0, // リ
+    0x0890d4b0, // ズ
+    0x0890d4c0, // ム
+    0x0890d4d0, // 天
+    0x0890d4e0, // 国
+};
+
 
 const struct Scene_ demo_scene_ = {
     demo_create,
