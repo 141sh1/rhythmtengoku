@@ -1,5 +1,8 @@
-#include "code_0800b778.h"
+#include "global.h"
+#include "code_08001360.h"
 #include "code_08003980.h"
+#include "code_08007468.h"
+#include "code_0800b778.h"
 #include "src/lib_0804c870.h"
 
 // Could use better split
@@ -128,7 +131,7 @@ u32 func_0800c1a8(void) {
 #include "asm/code_0800b778/asm_0800c398.s"
 
 // Parse beat values.
-u32 func_0800c3a4(u32 arg0) {
+s32 func_0800c3a4(u32 arg0) {
     fast_divsi3(arg0 << 8, D_030053c0.unk14);
 }
 
@@ -169,8 +172,6 @@ u32 func_0800c3b8() {
 #include "asm/code_0800b778/asm_0800c428.s"
 
 #include "asm/code_0800b778/asm_0800c42c.s"
-
-// #include "asm/code_0800b778/asm_0800c43c.s"
 
 // Allocate memory for a struct of size [arg0] (bytes). (?)
 u32 *func_0800c43c(u32 arg0) {
@@ -454,156 +455,3 @@ u32 *func_0800c43c(u32 arg0) {
 #include "asm/code_0800b778/asm_0800f8ec.s"
 
 #include "asm/code_0800b778/asm_0800f8f8.s"
-
-#include "asm/code_0800b778/asm_0800f904.s"
-
-// Create Entity (w/ Rotation/Scaling Parameters)
-    // arg0 = ... [Animation Pointer]
-    // arg1 = ... []
-    // arg2 = ... []
-    // arg3 = ... []
-    // arg4 = ... []
-    // arg5 = R/S [Scaling]
-    // arg6 = R/S [Rotation]
-    // arg7 = ... [Animation {0 = Still; 1 = Play Once; -1 = Loop; Other = Play First Frame Only?}]
-    // arg8 = ... []
-    // arg9 = ... []
-    // arg10 = R/S [Double-Size Flag]
-
-struct ScaledEntity *func_0800fa6c(u32 *arg0, s8 arg1, s16 arg2, s16 arg3, u16 arg4,
-                                    s16 arg5, s16 arg6, s8 arg7, s8 arg8, u16 arg9, u32 arg10) {
-    s16 object;
-    s8 offset;
-    struct ScaledEntity *entity;
-
-    // Create standard entity.
-    object = func_0804d160(D_03005380, arg0, arg1, arg2, arg3, arg4, arg7, arg8, arg9);
-    if (object < 0) return 0;
-
-    // Generate offset from D_03000368 in words. (?)
-    offset = func_0800c42c();
-    if (offset < 0) return 0;
-
-    // Allocate memory for the scalable entity.
-    entity = (struct ScaledEntity *) func_0800c43c(0x14);
-    if (entity == 0) return 0;
-
-    // Initialise scalable entity.
-    entity->unk0 = object;
-    entity->unk2 = offset;
-    entity->unk3 = arg10;
-    entity->unk4 = arg5;
-    entity->unk6 = arg5;
-    entity->unk8 = arg6;
-    entity->unkA = arg2;
-    entity->unkC = arg3;
-    entity->unkE = 0;
-    entity->unk10 = 0;
-
-    entity->unk12_0 = 0;
-    entity->unk12_1 = 1;
-    entity->unk12_2 = 0;
-    entity->unk12_3 = 0;
-    entity->unk12_4 = 0;
-
-    func_08007468(object, offset);
-    func_080022d8(offset);
-    func_080074c4(offset, entity->unk4, entity->unk6, entity->unk8);
-    func_0804dc8c(D_03005380, object, (arg10 != 0 ? 3 : 1));
-
-    return entity;
-}
-
-#include "asm/code_0800b778/asm_0800fba0.s"
-
-#include "asm/code_0800b778/asm_0800fc70.s"
-
-#include "asm/code_0800b778/asm_0800fca0.s"
-
-#include "asm/code_0800b778/asm_0800fd14.s"
-
-#include "asm/code_0800b778/asm_0800fd60.s"
-
-#include "asm/code_0800b778/asm_0800fd90.s"
-
-#include "asm/code_0800b778/asm_0800fda4.s"
-
-#include "asm/code_0800b778/asm_0800fddc.s"
-
-#include "asm/code_0800b778/asm_0800fdf8.s"
-
-#include "asm/code_0800b778/asm_0800fe0c.s"
-
-#include "asm/code_0800b778/asm_0800fe20.s"
-
-#include "asm/code_0800b778/asm_0800fe44.s"
-
-#include "asm/code_0800b778/asm_0800fe60.s"
-
-#include "asm/code_0800b778/asm_0800fe78.s"
-
-#include "asm/code_0800b778/asm_0800fe94.s"
-
-#include "asm/code_0800b778/asm_0800fea8.s"
-
-#include "asm/code_0800b778/asm_0800febc.s"
-
-#include "asm/code_0800b778/asm_0800fed0.s"
-
-#include "asm/code_0800b778/asm_0800feec.s"
-
-#include "asm/code_0800b778/asm_0800ff10.s"
-
-#include "asm/code_0800b778/asm_0800ff44.s"
-
-#include "asm/code_0800b778/asm_0800ff68.s"
-
-#include "asm/code_0800b778/asm_0800ff8c.s"
-
-#include "asm/code_0800b778/asm_0800ffc0.s"
-
-#include "asm/code_0800b778/asm_0800ffe4.s"
-
-#include "asm/code_0800b778/asm_08010008.s"
-
-#include "asm/code_0800b778/asm_08010040.s"
-
-#include "asm/code_0800b778/asm_08010064.s"
-
-#include "asm/code_0800b778/asm_080100a8.s"
-
-#include "asm/code_0800b778/asm_080100cc.s"
-
-#include "asm/code_0800b778/asm_080100f0.s"
-
-#include "asm/code_0800b778/asm_08010110.s"
-
-#include "asm/code_0800b778/asm_08010130.s"
-
-#include "asm/code_0800b778/asm_08010150.s"
-
-#include "asm/code_0800b778/asm_08010174.s"
-
-#include "asm/code_0800b778/asm_08010198.s"
-
-#include "asm/code_0800b778/asm_080101b8.s"
-
-#include "asm/code_0800b778/asm_080101d8.s"
-
-#include "asm/code_0800b778/asm_080101f8.s"
-
-#include "asm/code_0800b778/asm_08010218.s"
-
-#include "asm/code_0800b778/asm_08010238.s"
-
-#include "asm/code_0800b778/asm_08010260.s"
-
-#include "asm/code_0800b778/asm_08010288.s"
-
-#include "asm/code_0800b778/asm_080102a8.s"
-
-#include "asm/code_0800b778/asm_080102d0.s"
-
-#include "asm/code_0800b778/asm_080102f4.s"
-
-#include "asm/code_0800b778/asm_08010478.s"

@@ -1,24 +1,5 @@
 #pragma once
-
-#include "global.h"
-
-struct ScaledEntity {
-    s16 unk0;        // Standard Entity
-    u8  unk2;        // func_0800c42c()
-    u8  unk3;        // Double-Size Flag (arg10)
-    s16 unk4;        // Scaling (arg5)
-    s16 unk6;        // Scaling (arg5)
-    s16 unk8;        // Rotation (arg6)
-    u16 unkA;        // ? (arg2)
-    u16 unkC;        // ? (arg3)
-    u16 unkE;        // ? (0)
-    u16 unk10;       // ? (0)
-    u8  unk12_0:1;   // ?
-    u8  unk12_1:1;   // ?
-    u8  unk12_2:1;   // ?
-    u8  unk12_3:1;   // ?
-    u8  unk12_4:1;   // ?
-};
+#include "sound.h"
 
 // extern ? func_0800b778(?);
 // extern ? func_0800b834(?);
@@ -75,7 +56,7 @@ extern u32 func_0800c1a8(void);
 // extern ? func_0800c390(?);
 // extern ? func_0800c394(?);
 // extern ? func_0800c398(?);
-extern u32 func_0800c3a4(u32);
+extern s32 func_0800c3a4(u32);
 extern u32 func_0800c3b8();
 // extern ? func_0800c3c4(?);
 // extern ? func_0800c3e4(?);
@@ -234,52 +215,3 @@ extern void func_0800e62c(s16, u32, s16, u32, u16);
 // extern ? func_0800f8d8(?);
 // extern ? func_0800f8ec(?);
 // extern ? func_0800f8f8(?);
-// extern ? func_0800f904(?);
-extern struct ScaledEntity *func_0800fa6c(u32 *, s8, s16, s16, u16, s16, s16, s8, s8, u16, u32);
-// extern ? func_0800fba0(?);
-// extern ? func_0800fc70(?);
-// extern ? func_0800fca0(?);
-// extern ? func_0800fd14(?);
-// extern ? func_0800fd60(?);
-// extern ? func_0800fd90(?);
-// extern ? func_0800fda4(?);
-// extern ? func_0800fddc(?);
-// extern ? func_0800fdf8(?);
-// extern ? func_0800fe0c(?);
-// extern ? func_0800fe20(?);
-// extern ? func_0800fe44(?);
-// extern ? func_0800fe60(?);
-// extern ? func_0800fe78(?);
-// extern ? func_0800fe94(?);
-// extern ? func_0800fea8(?);
-// extern ? func_0800febc(?);
-// extern ? func_0800fed0(?);
-// extern ? func_0800feec(?);
-// extern ? func_0800ff10(?);
-// extern ? func_0800ff44(?);
-// extern ? func_0800ff68(?);
-// extern ? func_0800ff8c(?);
-// extern ? func_0800ffc0(?);
-// extern ? func_0800ffe4(?);
-// extern ? func_08010008(?);
-// extern ? func_08010040(?);
-// extern ? func_08010064(?);
-// extern ? func_080100a8(?);
-// extern ? func_080100cc(?);
-// extern ? func_080100f0(?);
-// extern ? func_08010110(?);
-// extern ? func_08010130(?);
-// extern ? func_08010150(?);
-// extern ? func_08010174(?);
-// extern ? func_08010198(?);
-// extern ? func_080101b8(?);
-// extern ? func_080101d8(?);
-// extern ? func_080101f8(?);
-// extern ? func_08010218(?);
-// extern ? func_08010238(?);
-// extern ? func_08010260(?);
-// extern ? func_08010288(?);
-// extern ? func_080102a8(?);
-// extern ? func_080102d0(?);
-// extern ? func_080102f4(?);
-// extern ? func_08010478(?);
